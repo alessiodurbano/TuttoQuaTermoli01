@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+
+# Sostituisci con il dominio definitivo prima della pubblicazione.
+Sitemap: https://www.tuttoqua.it/sitemap.xml

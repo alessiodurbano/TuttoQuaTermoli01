@@ -1,0 +1,147 @@
+// Schema database TuttoQua
+// Provider: SQLite in locale. Per la produzione basta cambiare provider in
+// "postgresql" (o "mysql") e aggiornare DATABASE_URL: i modelli restano identici.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Richieste di franchising (form "Apri TuttoQua nella tua città")
+// ---------------------------------------------------------------------------
+model FranchiseLead {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  city      String
+  phone     String?
+  message   String?
+
+  // Ciclo di vita del contatto: new | contacted | qualified | won | lost
+  status    String   @default("new")
+  notes     String? // note interne dello staff, non visibili all'utente
+
+  // Prova del consenso (art. 7 GDPR)
+  consentPrivacy   Boolean  @default(false)
+  consentAt        DateTime?
+  privacyVersion   String? // versione dell'informativa accettata
+
+  // Dati tecnici minimizzati: l'IP è salvato solo come hash con salt
+  ipHash    String?
+  userAgent String?
+
+  // Cancellazione automatica: oltre questa data il record viene rimosso
+  retentionUntil DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([retentionUntil])
+}
+
+// ---------------------------------------------------------------------------
+// Candidature (form "Lavora con noi")
+// ---------------------------------------------------------------------------
+model JobApplication {
+  id       String  @id @default(cuid())
+  name     String
+  email    String
+  phone    String?
+  role     String? // posizione desiderata
+  message  String?
+
+  // Risultato del "giochino" in pagina: Creativo | Risolutore | People person
+  personality String?
+
+  // CV: il file sta su disco (server/uploads), nel DB solo i riferimenti
+  cvStoredName   String?
+  cvOriginalName String?
+  cvMimeType     String?
+  cvSizeBytes    Int?
+
+  // Ciclo di vita: new | reviewing | interview | hired | rejected
+  status String  @default("new")
+  notes  String?
+
+  consentPrivacy Boolean   @default(false)
+  consentAt      DateTime?
+  privacyVersion String?
+
+  ipHash    String?
+  userAgent String?
+
+  retentionUntil DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([retentionUntil])
+}
+
+// ---------------------------------------------------------------------------
+// Registro dei consensi cookie (dimostrabilità del consenso, art. 7.1 GDPR)
+// Nessun dato identificativo: solo un id anonimo generato lato browser.
+// ---------------------------------------------------------------------------
+model CookieConsent {
+  id        String   @id @default(cuid())
+  visitorId String // UUID anonimo salvato nel localStorage del visitatore
+
+  necessary  Boolean @default(true) // sempre true, non disattivabile
+  functional Boolean @default(false) // es. Google Maps
+  analytics  Boolean @default(false) // es. statistiche di traffico
+
+  action        String // accept_all | reject_all | custom | withdraw
+  policyVersion String
+
+  ipHash    String?
+  userAgent String?
+
+  retentionUntil DateTime
+
+  createdAt DateTime @default(now())
+
+  @@index([visitorId])
+  @@index([createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// Utenti dell'area riservata (staff TuttoQua)
+// ---------------------------------------------------------------------------
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String?
+  role         String    @default("admin") // admin | viewer
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+// ---------------------------------------------------------------------------
+// Log delle azioni sui dati personali (accountability, art. 5.2 GDPR)
+// ---------------------------------------------------------------------------
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String? // AdminUser.id, null se azione automatica di sistema
+  actorEmail String?
+  action     String // login | view_cv | update_status | delete | export | retention_cleanup
+  entity     String? // FranchiseLead | JobApplication | CookieConsent
+  entityId   String?
+  detail     String?
+  ipHash     String?
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([action])
+}

@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TuttoQua — Tutto quello che cerchi, Tutto Qua. | Termoli</title>
+<meta name="description" content="TuttoQua è il nuovo negozio di Termoli: casa, pulizia, giochi e regali a portata di mano." />
+<link rel="icon" type="image/jpeg" href="https://media.base44.com/images/public/user_69edf90df19892081f8b0e25/04718a322_logo_tuttoqua_page-0001.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFFFF; --onyx:#1A1A1A;
+    --blue:#33b4e7; --blue-dark:#1d8fc4;
+    --orange:#ed6d1d; --orange-dark:#c95a14;
+    --lemon:#e6f07a; --pink:#f5a0c0; --mint:#a8e8c8;
+    --radius:1rem;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--onyx);-webkit-font-smoothing:antialiased;line-height:1.5}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .display{font-family:'Space Grotesk',sans-serif}
+  .wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
+  @media(min-width:640px){.wrap{padding:0 2rem}}
+  .hl{background:rgba(237,109,29,.7);padding:0 .5rem;margin:0 -.25rem;border-radius:.5rem}
+  .hl-blue{background:rgba(51,180,231,.7);padding:0 .5rem;margin:0 -.25rem;border-radius:.5rem}
+
+  /* NAVBAR */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;transition:all .3s}
+  header.scrolled{background:rgba(255,251,242,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(26,26,26,.1)}
+  nav{max-width:72rem;margin:0 auto;padding:0 1.25rem;height:4rem;display:flex;align-items:center;justify-content:space-between}
+  @media(min-width:640px){nav{padding:0 2rem;height:5rem}}
+  .logo{display:flex;align-items:center;gap:.5rem}
+  .logo img{width:2.25rem;height:2.25rem;border-radius:.75rem;object-fit:cover}
+  @media(min-width:640px){.logo img{width:2.5rem;height:2.5rem}}
+  .logo span{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.125rem;letter-spacing:-.02em}
+  @media(min-width:640px){.logo span{font-size:1.25rem}}
+  .nav-links{display:none;align-items:center;gap:.25rem}
+  @media(min-width:768px){.nav-links{display:flex}}
+  .nav-links a{padding:.5rem .875rem;border-radius:9999px;font-size:.875rem;font-weight:500;color:rgba(26,26,26,.7);transition:all .2s}
+  .nav-links a:hover{color:var(--onyx);background:rgba(26,26,26,.05)}
+  .nav-cta{display:none}
+  @media(min-width:640px){.nav-cta{display:inline-flex;align-items:center;gap:.375rem;background:var(--onyx);color:var(--cream);font-size:.875rem;font-weight:500;padding:.625rem 1rem;border-radius:9999px;transition:background .2s}}
+  .nav-cta:hover{background:var(--blue-dark)}
+  .menu-btn{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:9999px;border:1px solid rgba(26,26,26,.15);background:#fff;cursor:pointer}
+  @media(min-width:768px){.menu-btn{display:none}}
+  .mobile-menu{display:none;background:var(--cream);border-top:1px solid rgba(26,26,26,.1);padding:1rem 1.25rem;flex-direction:column;gap:.25rem}
+  .mobile-menu.open{display:flex}
+  @media(min-width:768px){.mobile-menu{display:none!important}}
+  .mobile-menu a{padding:.75rem 1rem;border-radius:1rem;font-size:.875rem;font-weight:500;color:rgba(26,26,26,.8)}
+  .mobile-menu a:hover{background:rgba(26,26,26,.05)}
+  .mobile-menu .cta{margin-top:.5rem;display:inline-flex;justify-content:center;background:var(--onyx);color:var(--cream);font-weight:600;padding:.75rem 1rem;border-radius:1rem}
+
+  /* SECTIONS */
+  section{scroll-margin-top:6rem}
+  .hero{padding-top:8rem;padding-bottom:4rem;overflow:hidden}
+  @media(min-width:640px){.hero{padding-top:10rem;padding-bottom:6rem}}
+  .hero-grid{display:grid;gap:3rem;align-items:center}
+  @media(min-width:1024px){.hero-grid{grid-template-columns:1fr 1fr;gap:4rem}}
+  .hero-text{text-align:center}
+  @media(min-width:1024px){.hero-text{text-align:left}}
+  .badge{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px solid rgba(26,26,26,.1);border-radius:9999px;padding:.375rem .875rem}
+  .badge .dot{width:.5rem;height:.5rem;border-radius:9999px;background:var(--orange)}
+  .badge span{font-size:.875rem;font-weight:500;color:rgba(26,26,26,.7)}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:800;letter-spacing:-.02em;font-size:3rem;line-height:1.02;margin-top:1.5rem}
+  @media(min-width:640px){h1{font-size:3.75rem}}
+  @media(min-width:1024px){h1{font-size:4.5rem}}
+  .hero p.lead{margin-top:1.5rem;max-width:28rem;margin-left:auto;margin-right:auto;font-size:1.125rem;color:rgba(26,26,26,.6);font-weight:500}
+  @media(min-width:1024px){.hero p.lead{margin-left:0;margin-right:0}}
+  .hero-cta{margin-top:2rem;display:flex;flex-direction:column;gap:.75rem;justify-content:center;align-items:center}
+  @media(min-width:640px){.hero-cta{flex-direction:row;justify-content:center}}
+  @media(min-width:1024px){.hero-cta{justify-content:flex-start}}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:600;font-size:.875rem;padding:.875rem 1.5rem;border-radius:9999px;transition:all .2s;cursor:pointer;border:none}
+  .btn-primary{background:var(--blue);color:#fff}
+  .btn-primary:hover{background:var(--blue-dark)}
+  .btn-ghost{background:#fff;color:var(--onyx);border:1px solid rgba(26,26,26,.15)}
+  .btn-ghost:hover{background:rgba(26,26,26,.05)}
+  .hero-img-wrap{position:relative}
+  .hero-img-box{position:relative;background:#fff;border-radius:2rem;border:1px solid rgba(26,26,26,.1);box-shadow:0 25px 50px -12px rgba(26,26,26,.15);overflow:hidden}
+  .hero-img-box img{width:100%;aspect-ratio:4/5;object-fit:cover}
+  @media(min-width:640px){.hero-img-box img{aspect-ratio:5/4}}
+  @media(min-width:1024px){.hero-img-box img{aspect-ratio:4/5}}
+  .star-doodle{position:absolute;top:-1.25rem;left:-1.25rem;width:3rem;height:3rem;color:var(--orange);filter:drop-shadow(0 1px 2px rgba(0,0,0,.1))}
+  .hero-tag{position:absolute;bottom:-1rem;right:1rem;background:var(--blue);color:#fff;font-size:.75rem;font-weight:600;padding:.5rem .875rem;border-radius:9999px;box-shadow:0 4px 6px rgba(0,0,0,.1)}
+
+  /* CONCEPT */
+  .concept{padding:5rem 0}
+  @media(min-width:640px){.concept{padding:7rem 0}}
+  .eyebrow{font-size:.875rem;font-weight:500;color:var(--blue)}
+  h2{font-family:'Space Grotesk',sans-serif;font-weight:800;letter-spacing:-.02em;font-size:2.5rem;line-height:1.05;margin-top:.75rem}
+  @media(min-width:640px){h2{font-size:3rem}}
+  .section-lead{margin-top:1.25rem;max-width:36rem;font-size:1.125rem;color:rgba(26,26,26,.6);font-weight:400}
+  .cats{margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+  @media(min-width:1024px){.cats{grid-template-columns:repeat(4,1fr);gap:1rem}}
+  .cat{display:flex;align-items:center;gap:.75rem;background:#fff;border:1px solid rgba(26,26,26,.1);border-radius:1rem;padding:1rem 1.25rem;transition:border-color .2s}
+  .cat:hover{border-color:rgba(26,26,26,.2)}
+  .cat .ic{display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:.75rem;flex-shrink:0}
+  .cat p{font-weight:500;font-size:.875rem;line-height:1.2}
+  @media(min-width:640px){.cat p{font-size:1rem}}
+  .ic-blue{background:rgba(51,180,231,.1);color:var(--blue-dark)}
+  .ic-orange{background:rgba(237,109,29,.1);color:var(--orange-dark)}
+  .ic-lemon{background:rgba(230,240,122,.4);color:var(--onyx)}
+  .ic-pink{background:rgba(245,160,192,.3);color:var(--onyx)}
+
+  /* LOCATION */
+  .location{padding:5rem 0;background:#fff;border-top:1px solid rgba(26,26,26,.1);border-bottom:1px solid rgba(26,26,26,.1)}
+  @media(min-width:640px){.location{padding:7rem 0}}
+  .loc-grid{display:grid;gap:2.5rem;align-items:center}
+  @media(min-width:1024px){.loc-grid{grid-template-columns:1fr 1fr;gap:3.5rem}}
+  .loc-photo{position:relative;order:2}
+  @media(min-width:1024px){.loc-photo{order:1}}
+  .loc-photo .box{background:var(--cream);border-radius:2rem;border:1px solid rgba(26,26,26,.1);box-shadow:0 25px 50px -12px rgba(26,26,26,.1);overflow:hidden}
+  .loc-photo img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .loc-photo .pin{position:absolute;bottom:-1rem;right:1rem;background:var(--orange);color:var(--cream);font-size:.75rem;font-weight:600;padding:.625rem 1rem;border-radius:9999px;box-shadow:0 4px 6px rgba(0,0,0,.1)}
+  .loc-info{order:1}
+  @media(min-width:1024px){.loc-info{order:2}}
+  .loc-info p.lead{margin-top:1.25rem;font-size:1.125rem;color:rgba(26,26,26,.6);font-weight:400}
+  .loc-list{margin-top:2rem;display:flex;flex-direction:column;gap:1rem}
+  .loc-row{display:flex;align-items:flex-start;gap:.75rem}
+  .loc-row .ic{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:.75rem;flex-shrink:0}
+  .loc-row .lbl{font-size:.75rem;color:rgba(26,26,26,.4);font-weight:300}
+  .loc-row .val{font-weight:400}
+  .loc-cta{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.75rem}
+
+  /* FRANCHISING */
+  .franchising{padding:5rem 0;position:relative}
+  @media(min-width:640px){.franchising{padding:7rem 0}}
+  .fr-grid{margin-top:3rem;display:grid;gap:1.25rem}
+  @media(min-width:1024px){.fr-grid{grid-template-columns:1fr 1fr 1fr;gap:1.5rem}}
+  .benefits{display:flex;flex-direction:column;gap:.75rem}
+  .benefit{display:flex;gap:1rem;background:#fff;border:1px solid rgba(26,26,26,.1);border-radius:1rem;padding:1.25rem}
+  .benefit .ic{display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:.75rem;background:rgba(51,180,231,.1);color:var(--blue-dark);flex-shrink:0}
+  .benefit h3{font-weight:600;line-height:1.2}
+  .benefit p{margin-top:.25rem;font-size:.875rem;color:rgba(26,26,26,.6)}
+  .steps{background:var(--onyx);color:var(--cream);border-radius:2rem;padding:1.5rem 1.5rem}
+  @media(min-width:640px){.steps{padding:2rem}}
+  .steps h3{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem}
+  .steps .sub{margin-top:.375rem;font-size:.875rem;color:rgba(255,251,242,.5)}
+  .steps ol{margin-top:1.5rem;list-style:none;display:flex;flex-direction:column;gap:1.25rem}
+  .steps li{display:flex;gap:1rem}
+  .steps .n{font-family:monospace;font-weight:600;color:var(--orange);font-size:.875rem;flex-shrink:0;width:2rem}
+  .steps .t{font-weight:600;line-height:1.2}
+  .steps .d{font-size:.875rem;color:rgba(255,251,242,.6)}
+  .form-card{background:#fff;border:1px solid rgba(26,26,26,.1);border-radius:2rem;padding:1.5rem;box-shadow:0 10px 30px -5px rgba(26,26,26,.08);display:flex;flex-direction:column;gap:1rem}
+  @media(min-width:640px){.form-card{padding:1.75rem}}
+  .form-card h3{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem}
+  .form-card .hint{margin-top:.25rem;font-size:.75rem;color:rgba(26,26,26,.5)}
+  .field{display:block}
+  .field span.lbl{font-size:.75rem;font-weight:500;color:rgba(26,26,26,.6)}
+  .field span.req{color:var(--orange)}
+  .field input,.field textarea{margin-top:.375rem;width:100%;background:var(--cream);border:1px solid rgba(26,26,26,.15);border-radius:1rem;padding:.75rem 1rem;font-family:inherit;font-size:.9rem;color:var(--onyx);transition:border .2s}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 2px rgba(51,180,231,.3)}
+  .field textarea{resize:none}
+  .btn-submit{background:var(--blue);color:#fff;font-weight:600;font-size:.875rem;padding:.875rem 1.25rem;border-radius:9999px;border:none;cursor:pointer;transition:background .2s}
+  .btn-submit:hover{background:var(--blue-dark)}
+  .btn-submit:disabled{opacity:.6}
+  .alert{display:flex;align-items:center;gap:.5rem;background:rgba(168,232,200,.4);border:1px solid rgba(26,26,26,.1);border-radius:1rem;padding:.75rem 1rem;font-size:.875rem;font-weight:500}
+  .alert.err{background:rgba(237,109,29,.15);color:var(--orange-dark)}
+  .form-foot{text-align:center;font-size:.75rem;color:rgba(26,26,26,.4)}
+
+  /* LAVORA */
+  .lavora{padding:5rem 0;background:#fff;border-top:1px solid rgba(26,26,26,.1);border-bottom:1px solid rgba(26,26,26,.1)}
+  @media(min-width:640px){.lavora{padding:7rem 0}}
+  .lav-grid{display:grid;gap:2.5rem;align-items:center}
+  @media(min-width:1024px){.lav-grid{grid-template-columns:1fr 1fr;gap:3.5rem}}
+  .lav-photo{position:relative}
+  .lav-photo .box{background:var(--cream);border-radius:2rem;border:1px solid rgba(26,26,26,.1);box-shadow:0 25px 50px -12px rgba(26,26,26,.1);overflow:hidden}
+  .lav-photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+  @media(min-width:640px){.lav-photo img{aspect-ratio:5/4}}
+  .lav-photo .star{position:absolute;top:-1.25rem;right:-1.25rem;width:3rem;height:3rem;color:var(--orange);transform:rotate(12deg);filter:drop-shadow(0 1px 2px rgba(0,0,0,.1))}
+  .lav-form p.lead{margin-top:1.25rem;font-size:1.125rem;color:rgba(26,26,26,.6);font-weight:400}
+  .toggles-label{margin-top:1.75rem;font-size:.75rem;color:rgba(26,26,26,.5);font-weight:400}
+  .toggles{margin-top:.625rem;display:flex;flex-wrap:wrap;gap:.625rem}
+  .toggle{display:inline-flex;align-items:center;gap:.5rem;padding:.625rem 1rem;border-radius:9999px;border:1px solid rgba(26,26,26,.15);background:#fff;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .2s}
+  .toggle:hover{background:rgba(26,26,26,.05)}
+  .toggle.active{border-width:2px}
+  .toggle.active.t-creativo{background:rgba(245,160,192,.3);border-color:var(--orange)}
+  .toggle.active.t-risolutore{background:rgba(230,240,122,.5);border-color:var(--blue)}
+  .toggle.active.t-people{background:rgba(51,180,231,.15);border-color:var(--orange)}
+  .lav-form form{margin-top:1.75rem;display:grid;gap:.875rem}
+  @media(min-width:640px){.lav-form form{grid-template-columns:1fr 1fr}}
+  .lav-form .full{grid-column:1/-1}
+  .cv-box{display:flex;align-items:center;gap:.75rem;background:var(--cream);border:1px dashed rgba(26,26,26,.25);border-radius:1rem;padding:.75rem 1rem;cursor:pointer;transition:background .2s}
+  .cv-box:hover{background:rgba(230,240,122,.2)}
+  .cv-box input{display:none}
+  .cv-box label{font-size:.875rem;color:rgba(26,26,26,.6);cursor:pointer;flex:1}
+
+  /* FOOTER */
+  footer{padding:4rem 0 2rem;background:#000000;color:#fff}
+  .foot-grid{display:grid;gap:2.5rem}
+  @media(min-width:768px){.foot-grid{grid-template-columns:2fr 1fr 1fr}}
+  .foot-brand .lockup{display:flex;align-items:center;gap:.75rem}
+  .foot-brand .lockup span.ic{display:grid;place-items:center;background:#fff;border-radius:1rem;width:2.75rem;height:2.75rem;overflow:hidden}
+  .foot-brand .lockup span.ic img{width:100%;height:100%;object-fit:contain;padding:.25rem}
+  .foot-brand .lockup b{font-family:'Space Grotesk',sans-serif;font-size:1.5rem}
+  .foot-brand p{margin-top:1rem;max-width:24rem;color:rgba(255,255,255,.6);font-weight:400}
+  .foot-social{margin-top:1.25rem;display:flex;gap:.75rem}
+  .foot-social a{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:9999px;background:rgba(255,255,255,.1);transition:background .2s}
+  .foot-social a:hover{background:var(--orange)}
+  .foot-col h3{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.4)}
+  .foot-col ul{margin-top:1rem;list-style:none;display:flex;flex-direction:column;gap:.75rem;font-size:.875rem}
+  .foot-col li{display:flex;align-items:flex-start;gap:.625rem;color:rgba(255,255,255,.7);font-weight:300}
+  .foot-col li a{color:rgba(255,255,255,.7);font-weight:300}
+  .foot-col li a:hover{color:#fff}
+  .foot-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;gap:1rem;align-items:center;justify-content:space-between}
+  @media(min-width:640px){.foot-bottom{flex-direction:row}}
+  .foot-bottom p{font-size:.75rem;color:rgba(255,255,255,.4);font-weight:400}
+  .foot-bottom .made{display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:rgba(255,255,255,.4)}
+
+  .ic svg{width:1.25rem;height:1.25rem}
+  .cat .ic svg{width:1.25rem;height:1.25rem}
+  .benefit .ic svg{width:1.25rem;height:1.25rem}
+  .loc-row .ic svg{width:1.25rem;height:1.25rem}
+  .foot-social a svg{width:1.25rem;height:1.25rem}
+  .foot-col li svg{width:1rem;height:1rem;flex-shrink:0;margin-top:.125rem}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header id="header">
+  <nav>
+    <a href="#top" class="logo">
+      <img src="https://media.base44.com/images/public/user_69edf90df19892081f8b0e25/04718a322_logo_tuttoqua_page-0001.jpg" alt="TuttoQua" />
+      <span>TuttoQua</span>
+    </a>
+    <div class="nav-links">
+      <a href="#concept">Concept</a>
+      <a href="#store">Lo store</a>
+      <a href="#franchising">Franchising</a>
+      <a href="#lavora">Lavora con noi</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:.5rem">
+      <a href="#franchising" class="nav-cta">Apri TuttoQua</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu"></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#concept">Concept</a>
+    <a href="#store">Lo store</a>
+    <a href="#franchising">Franchising</a>
+    <a href="#lavora">Lavora con noi</a>
+    <a href="#franchising" class="cta">Apri TuttoQua</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="badge"><span class="dot"></span><span>Presto a Termoli</span></span>
+        <h1>Tutto quello che cerchi, <span class="hl">Tutto Qua.</span></h1>
+        <p class="lead">Arriva a Termoli (CB) il primo negozio targato TuttoQua. Un luogo dove la cura della persona, della casa e dei bambini è al primo posto con prezzi accessibili e prodotti di cui non sapevi di aver bisogno.</p>
+        <div class="hero-cta">
+          <a href="#concept" class="btn btn-primary">Scopri il concept →</a>
+          <a href="#franchising" class="btn btn-ghost">📍 Apri con noi</a>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="hero-img-box">
+          <img src="https://media.base44.com/images/public/6a745399ac335c82532a8d85/9756fbe8a_generated_image.png" alt="Una selezione di oggetti colorati di TuttoQua" />
+        </div>
+        <svg class="star-doodle" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5l2.9 6.9 7.6.6-5.8 5 1.8 7.4L12 17.8 5.5 21.4l1.8-7.4-5.8-5 7.6-.6L12 1.5z"/></svg>
+        <span class="hero-tag">Il primo store in Molise</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section id="concept" class="concept">
+  <div class="wrap">
+    <div style="max-width:36rem">
+      <span class="eyebrow">il concept</span>
+      <h2>Un mondo di cose utili — <span class="hl">e curiose.</span></h2>
+      <p class="section-lead">TuttoQua rende accessibile il bello e l'utile, ogni giorno. Oggettistica per la casa, prodotti per la pulizia, giochi, regali e cancelleria — scelti uno per uno, a prezzi onesti.</p>
+    </div>
+    <div class="cats">
+      <div class="cat"><span class="ic ic-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><p>Casalinghi</p></div>
+      <div class="cat"><span class="ic ic-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h.01"/><path d="M7 5h.01"/><path d="M11 7h.01"/><path d="M3 7h.01"/><path d="M7 9h.01"/><rect width="4" height="4" x="15" y="5"/><path d="m19 9 2 2v10c0 .6-.4 1-1 1h-6c-.6 0-1-.4-1-1V11l2-2"/></svg></span><p>Pulizia</p></div>
+      <div class="cat"><span class="ic ic-lemon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg></span><p>Giocattoli</p></div>
+      <div class="cat"><span class="ic ic-pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span><p>Cartoleria</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="store" class="location">
+  <div class="wrap">
+    <div class="loc-grid">
+      <div class="loc-photo">
+        <div class="box"><img src="https://media.base44.com/images/public/user_69edf90df19892081f8b0e25/969598e6f_WhatsAppImage2026-08-05at165810.jpg" alt="Vetrina del negozio TuttoQua a Termoli" /></div>
+        <span class="pin">Termoli (CB)</span>
+      </div>
+      <div class="loc-info">
+        <h2>Vieni a trovarci a <span class="hl">Termoli.</span></h2>
+        <p class="lead">Ci stai ancora pensando?! Cosa aspetti, vieni a trovarci!</p>
+        <div class="loc-list">
+          <div class="loc-row"><span class="ic ic-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><p class="lbl">Indirizzo</p><p class="val">Termoli (CB)</p></div></div>
+          <div class="loc-row"><span class="ic ic-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><div><p class="lbl">Orari</p><p class="val">In fase di apertura</p></div></div>
+          <div class="loc-row"><span class="ic ic-lemon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><div><p class="lbl">Chiamaci</p><p class="val">380 376 6521</p></div></div>
+        </div>
+        <div class="loc-cta">
+          <a href="https://www.google.com/maps/search/Termoli+CB" target="_blank" rel="noopener" class="btn btn-primary">Siamo a Termoli! ↗</a>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:3rem">
+      <div style="background:#fff;border-radius:2rem;border:1px solid rgba(26,26,26,.1);overflow:hidden">
+        <iframe title="Mappa TuttoQua Termoli" src="https://www.google.com/maps?q=Termoli%20CB&z=14&output=embed" style="width:100%;height:320px;border:0;filter:grayscale(.15)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRANCHISING -->
+<section id="franchising" class="franchising">
+  <div class="wrap">
+    <div style="max-width:36rem">
+      <span class="eyebrow" style="color:var(--orange)">Franchising</span>
+      <h2>Apri <span style="color:var(--orange)">TuttoQua</span> nella <span class="hl-blue">tua città.</span></h2>
+      <p class="section-lead">Un format giovane e dinamico in continua crescita! Tuffati nel retail e sperimenta il nostro brand. Lo faremo insieme a te, step by step.</p>
+    </div>
+    <div class="fr-grid">
+      <div class="benefits">
+        <div class="benefit"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span><div><h3>Assortimento pronto</h3><p>Un catalogo curato e sempre in aggiornamento con molte referenze</p></div></div>
+        <div class="benefit"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span><div><h3>Brand in crescita</h3><p>Una presenza online ed offline forte e riconoscibile che ti aiuta nel differenziarti dalla concorrenza</p></div></div>
+        <div class="benefit"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><div><h3>Modello a basso rischio</h3><p>Investimento contenuto con margini fin da subito chiari ed ordinati</p></div></div>
+        <div class="benefit"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg></span><div><h3>Ti aiutiamo noi</h3><p>Dall'apertura fino alla vendita dei prodotti sullo scaffale sarai sempre aiutato da noi</p></div></div>
+      </div>
+      <div class="steps">
+        <h3>Il percorso</h3>
+        <p class="sub">Dal contatto all'apertura, step by step.</p>
+        <ol>
+          <li><span class="n">01</span><div><p class="t">Contatto</p><p class="d">Compila il modulo: ti ricontattiamo entro 48h.</p></div></li>
+          <li><span class="n">02</span><div><p class="t">Feasibility</p><p class="d">Analizziamo insieme la tua città e la location ideale.</p></div></li>
+          <li><span class="n">03</span><div><p class="t">Apertura</p><p class="d">Arredamento, fornitura e lancio: siamo sul campo con te.</p></div></li>
+          <li><span class="n">04</span><div><p class="t">Crescita</p><p class="d">Marketing locale e rifornimento continuo per far girare il negozio.</p></div></li>
+        </ol>
+      </div>
+      <form class="form-card" id="frForm">
+        <div><h3>Sei pronto? Iniziamo!</h3><p class="hint">4 campi. Ti ricontattiamo noi.</p></div>
+        <label class="field"><span class="lbl">Nome e cognome <span class="req">*</span></span><input required name="name" placeholder="Mario Rossi" /></label>
+        <label class="field"><span class="lbl">Email <span class="req">*</span></span><input required type="email" name="email" placeholder="mario@email.it" /></label>
+        <label class="field"><span class="lbl">Città di interesse <span class="req">*</span></span><input required name="city" placeholder="es. Campobasso" /></label>
+        <label class="field"><span class="lbl">Telefono</span><input type="tel" name="phone" placeholder="+39 ..." /></label>
+        <label class="field"><span class="lbl">Messaggio (facoltativo)</span><textarea rows="2" name="message" placeholder="Raccontaci la tua idea..."></textarea></label>
+        <button type="submit" class="btn-submit">Invia richiesta ➤</button>
+        <div id="frAlert"></div>
+        <p class="form-foot">Oppure scrivi a <b>franchising@tuttoqua.it</b></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- LAVORA CON NOI -->
+<section id="lavora" class="lavora">
+  <div class="wrap">
+    <div class="lav-grid">
+      <div class="lav-photo">
+        <div class="box"><img src="https://media.base44.com/images/public/user_69edf90df19892081f8b0e25/a5c98a440_WhatsAppImage2026-08-05at165811.jpg" alt="Staff TuttoQua" /></div>
+        <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5l2.9 6.9 7.6.6-5.8 5 1.8 7.4L12 17.8 5.5 21.4l1.8-7.4-5.8-5 7.6-.6L12 1.5z"/></svg>
+      </div>
+      <div class="lav-form">
+        <span class="eyebrow">Lavora con noi</span>
+        <h2>Cerchiamo persone <span class="hl">con la Q maiuscola!</span></h2>
+        <p class="lead">Ammiriamo chi ha energia, curiosità e voglia di mettersi in gioco! Ti riconosci in una di queste qualità?</p>
+        <p class="toggles-label">Giochino! Come ti descriveresti?!</p>
+        <div class="toggles" id="toggles">
+          <button type="button" class="toggle t-creativo" data-p="Creativo">🎨 Creativo</button>
+          <button type="button" class="toggle t-risolutore" data-p="Risolutore">🔧 Risolutore</button>
+          <button type="button" class="toggle t-people" data-p="People person">👥 People person</button>
+        </div>
+        <form id="lavForm">
+          <label class="field"><span class="lbl">Nome <span class="req">*</span></span><input required name="name" placeholder="Mario Rossi" /></label>
+          <label class="field"><span class="lbl">Email <span class="req">*</span></span><input required type="email" name="email" placeholder="mario@email.it" /></label>
+          <label class="field"><span class="lbl">Telefono</span><input type="tel" name="phone" placeholder="+39 ..." /></label>
+          <label class="field"><span class="lbl">Posizione desiderata</span><input name="role" placeholder="es. Venditore" /></label>
+          <label class="field full"><span class="lbl">Messaggio (facoltativo)</span><textarea rows="2" name="message" placeholder="Raccontati in due righe..."></textarea></label>
+          <label class="full"><span class="lbl" style="font-size:.75rem;font-weight:500;color:rgba(26,26,26,.6);display:block;margin-bottom:.375rem">CV (PDF, facoltativo)</span>
+            <div class="cv-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.25rem;height:1.25rem;color:rgba(26,26,26,.5)"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+              <input type="file" accept=".pdf,.doc,.docx" id="cvUpload" />
+              <label for="cvUpload" id="cvLabel">Trascina o seleziona il file</label>
+              <span id="cvCheck" style="display:none;color:var(--blue)">✓</span>
+            </div>
+          </label>
+          <button type="submit" class="btn-submit full" style="justify-content:center">Invia candidatura ➤</button>
+          <div id="lavAlert" class="full"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contatti">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="lockup"><span class="ic"><img src="https://media.base44.com/images/public/user_69edf90df19892081f8b0e25/04718a322_logo_tuttoqua_page-0001.jpg" alt="TuttoQua" /></span><b>TuttoQua</b></div>
+        <p>Tutto quello che cerchi, proprio Qua. Il nuovo concept store di Termoli — e presto, nella tua città.</p>
+        <div class="foot-social">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h3>Contatti</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Termoli (CB)<br>indirizzo in via di definizione</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Lun–Sab · 9:30–13 / 16:30–20</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> <a href="mailto:info@tuttoqua.it">info@tuttoqua.it</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>Esplora</h3>
+        <ul>
+          <li><a href="#concept">Concept ↗</a></li>
+          <li><a href="#store">Lo store ↗</a></li>
+          <li><a href="#franchising">Franchising ↗</a></li>
+          <li><a href="#lavora">Lavora con noi ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="year"></span> TuttoQua · Termoli (CB) · P.IVA in via di attribuzione</p>
+      <div class="made">Made with ❤️ da Alessio D.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Navbar scroll
+  const header = document.getElementById('header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
+  onScroll(); window.addEventListener('scroll', onScroll);
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.25rem;height:1.25rem"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>';
+  const closeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.25rem;height:1.25rem"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
+  menuBtn.innerHTML = menuIcon;
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    menuBtn.innerHTML = open ? closeIcon : menuIcon;
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open'); menuBtn.innerHTML = menuIcon;
+  }));
+
+  // Personality toggles
+  let picked = '';
+  document.querySelectorAll('#toggles .toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const wasActive = btn.classList.contains('active');
+      document.querySelectorAll('#toggles .toggle').forEach(b => b.classList.remove('active'));
+      if (!wasActive) { btn.classList.add('active'); picked = btn.dataset.p; }
+      else { picked = ''; }
+    });
+  });
+
+  // CV upload display
+  const cvUpload = document.getElementById('cvUpload');
+  const cvLabel = document.getElementById('cvLabel');
+  const cvCheck = document.getElementById('cvCheck');
+  cvUpload.addEventListener('change', () => {
+    if (cvUpload.files[0]) {
+      cvLabel.textContent = 'CV caricato ✓';
+      cvCheck.style.display = 'inline';
+    }
+  });
+
+  // Franchise form mock
+  document.getElementById('frForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    const alertBox = document.getElementById('frAlert');
+    btn.disabled = true; btn.textContent = 'Invio...';
+    setTimeout(() => {
+      btn.disabled = false; btn.textContent = 'Invia richiesta ➤';
+      alertBox.innerHTML = '<div class="alert">✓ Richiesta inviata! Ti contattiamo presto.</div>';
+      e.target.reset();
+    }, 800);
+  });
+
+  // Lavora form mock
+  document.getElementById('lavForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    const alertBox = document.getElementById('lavAlert');
+    btn.disabled = true; btn.textContent = 'Invio...';
+    setTimeout(() => {
+      btn.disabled = false; btn.textContent = 'Invia candidatura ➤';
+      alertBox.innerHTML = '<div class="alert">✓ Candidatura inviata! Grazie, ti ricontattiamo.</div>';
+      e.target.reset();
+      document.querySelectorAll('#toggles .toggle').forEach(b => b.classList.remove('active'));
+      picked = ''; cvLabel.textContent = 'Trascina o seleziona il file'; cvCheck.style.display = 'none';
+    }, 800);
+  });
+</script>
+</body>
+</html>

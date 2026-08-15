@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+.DS_Store
+
+# Database SQLite
+server/prisma/*.db
+server/prisma/*.db-journal
+server/prisma/dev.db*
+
+# CV caricati dai candidati (dati personali: mai in git)
+server/uploads/*
+!server/uploads/.gitkeep
